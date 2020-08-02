@@ -53,8 +53,11 @@ module CommonMethods
         replace_into_file(file, /(#{@old_module_name}*)/m, @new_module_name)
       end
 
-      #Rename session key
-      replace_into_file('config/initializers/session_store.rb', /(('|")_.*_session('|"))/i, "'_#{@new_key}_session'")
+      unless Rails.version >= '6.0.0.0'
+        #Rename session key
+        replace_into_file('config/initializers/session_store.rb', /(('|")_.*_session('|"))/i, "'_#{@new_key}_session'")
+      end
+
       #Rename database
       replace_into_file('config/database.yml', /#{@old_module_name.underscore}/i, @new_name.underscore)
     end
