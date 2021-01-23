@@ -9,7 +9,7 @@ Tested up to Rails 6.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rename'
+gem 'rename', github: 'rocketlaunchcloud/rename'
 ```
 
 ## Usage
